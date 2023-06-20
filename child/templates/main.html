@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* Custom CSS */
+      .custom-img {
+        width: 200px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body class="bg-black">
+    <div
+      class="container border border-white text-center p-5 mt-5 rounded bg-black"
+      style="width: 50%"
+    >
+      <h1 class="text-white">upload file to imagekit</h1>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file" required class="form-control mt-5" />
+        <div class="d-grid mt-4">
+          <button class="btn btn-info text-white">Upload</button>
+        </div>
+      </form>
+    </div>
+    <div class="container mt-5">
+      <div class="row">
+        {% for mf in all_files %}
+
+        <div class="col-sm-4">
+          <img src="{{mf.file}}" class="image-fluid custom-img" />
+        </div>
+
+        {% endfor %}
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
