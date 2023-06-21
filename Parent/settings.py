@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -118,6 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STSTICFILES_DIRS = [BASE_DIR,'static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -129,3 +131,93 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 IMAGEKIT_PUBLIC_KEY = os.environ.get("IMAGEKIT_PUBLIC_KEY")
 IMAGEKIT_PVT_KEY=os.environ.get("IMAGEKIT_PVT_KEY")
 IMAGE_KIT_URLENDPOINT = os.environ.get("IMAGE_KIT_URLENDPOINT")
+
+
+# jazzmin configuration
+JAZZMIN_SETTINGS = {
+
+    "site_title": "ImagekitIO", #to change title
+     "site_header": "Library", #logout screen pr heading change
+       # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_brand": "ImagekitIO",
+
+       # Logo to use for your site, must be present in static files, used for brand on top left
+    "site_logo": "pic.jpg",
+
+     # Welcome text on the login screen
+    "welcome_sign": "Welcome to the ImagekitIO",
+
+     # Welcome text on the login screen
+    "welcome_sign": "Welcome to the ImagekitIO backend",
+
+    # List of model admins to search from the search bar, search bar omitted if excluded
+    # If you want to use a single search field you dont need to use a list, you can use a simple string 
+    "search_model": ["auth.User", "auth.Group","child.filedata" ],
+
+    "topmenu_links":[
+        {"model":"child.filedata"}, #direct model link in top menu
+    ],
+ 
+    #############
+    # User Menu #
+    #############
+
+    # Additional links to include in the user menu on the top right ("app" url type is not allowed)
+    "usermenu_links": [
+        {"name": "Support", "url": "https://google.com", "new_window": True, 'icon':"fas fa-headset"},
+        # {"model": "auth.user"}
+    ],
+
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    # "hide_models": ['auth.group'],
+
+     "show_ui_builder": True,
+
+     ###############
+    # Change view #
+    ###############
+    # Render out the change view as a single form, or in tabs, current options are
+    # - single
+    # - horizontal_tabs (default)
+    # - vertical_tabs
+    # - collapsible
+    # - carousel
+    "changeform_format": "collapsible",
+
+     
+
+
+}
+JAZZMIN_UI_TWEAKS = {
+    "theme": "darkly",
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": False,
+    "accent": "accent-primary",
+    "navbar": "navbar-dark",
+    "no_navbar_border": False,
+    "navbar_fixed": False,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": False,
+    "sidebar": "sidebar-dark-lime",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    # "theme": "superhero",
+    "dark_mode_theme": "superhero",
+    "button_classes": {
+        "primary": "btn-primary",
+        "secondary": "btn-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    }
+}
